@@ -26,51 +26,38 @@ int main() {
     */
     //----------------------------------------------------------------//
     {
-        int is_in = 0;
-        int appear_2 = 1;
-        
-
-        for(int i = 0; i < n1; i++){
-
-            for(int j = 0; j < n2; j++){
-                if(set1[i] == set2[j]){
-                    is_in = 1;
-                    break;
+        for (size_t i = 0; i < n1; i++){
+            for (size_t j = 0; j < n2; j++){
+                if (set1[i] == set2[j]){
+                    int exists = 0;
+                    for (size_t k = 0; k < n1; k++){
+                        if (intersection[k] == set1[i]){
+                            exists = 1;
+                            break;
+                        }
+                    }
+                    if (exists != 1){
+                        intersection[count++] = set1[i];
+                    }
                 }
-            }
-            for(k = 0; k < count; k++){
-                if(set[i] == intersection[k]{
-                    appear_2 = 0;
-                }
-            }
 
-            if(is_in == 1 && appear_2 != 0){
-                intersection[count] = set1[i];
-
-                count++;
             }
-
-            is_in = 0;
-            appear_2 = 1;
         }
-
-        for(int i = 0; i < count; i++){
-            for(int j = i + 1; j < count; j++){
-                int c = intersection[i];
-
-                if(intersection[i] > intersection[j]){
-                    intersection[i] = intersection[j];
-                    intersection[j] = c;
+        for (size_t i = 0; i < count; i++){
+            for (size_t j = 0; j < count - i - 1; j++){
+                if (intersection[j]>intersection[j+1]){
+                    int tmp = intersection[j];
+                    intersection[j] = intersection[j+1];
+                    intersection[j+1] = tmp;
                 }
             }
         }
     }
-    for(i = 0; i < count; i++){
+    //----------------------------------------------------------------//
+    for(i = 0; i < count; i++) {
         printf("%d ", intersection[i]);
     }
     printf("\n");
-    
-    
 
     return 0;
 }
