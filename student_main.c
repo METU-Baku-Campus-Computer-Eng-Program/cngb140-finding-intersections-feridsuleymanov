@@ -26,13 +26,51 @@ int main() {
     */
     //----------------------------------------------------------------//
     {
+        int is_in = 0;
+        int appear_2 = 1;
+        
 
+        for(int i = 0; i < n1; i++){
+
+            for(int j = 0; j < n2; j++){
+                if(set1[i] == set2[j]){
+                    is_in = 1;
+                    break;
+                }
+            }
+            for(k = 0; k < count; k++){
+                if(set[i] == intersection[k]{
+                    appear_2 = 0;
+                }
+            }
+
+            if(is_in == 1 && appear_2 != 0){
+                intersection[count] = set1[i];
+
+                count++;
+            }
+
+            is_in = 0;
+            appear_2 = 1;
+        }
+
+        for(int i = 0; i < count; i++){
+            for(int j = i + 1; j < count; j++){
+                int c = intersection[i];
+
+                if(intersection[i] > intersection[j]){
+                    intersection[i] = intersection[j];
+                    intersection[j] = c;
+                }
+            }
+        }
     }
-    //----------------------------------------------------------------//
-    for(i = 0; i < count; i++) {
+    for(i = 0; i < count; i++){
         printf("%d ", intersection[i]);
     }
     printf("\n");
+    
+    
 
     return 0;
 }
