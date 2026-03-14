@@ -26,7 +26,32 @@ int main() {
     */
     //----------------------------------------------------------------//
     {
+        for (size_t i = 0; i < n1; i++){
+            for (size_t j = 0; j < n2; j++){
+                if (set1[i] == set2[j]){
+                    int exists = 0;
+                    for (size_t k = 0; k < n1; k++){
+                        if (intersection[k] == set1[i]){
+                            exists = 1;
+                            break;
+                        }
+                    }
+                    if (exists != 1){
+                        intersection[count++] = set1[i];
+                    }
+                }
 
+            }
+        }
+        for (size_t i = 0; i < count; i++){
+            for (size_t j = 0; j < count - i - 1; j++){
+                if (intersection[j]>intersection[j+1]){
+                    int tmp = intersection[j];
+                    intersection[j] = intersection[j+1];
+                    intersection[j+1] = tmp;
+                }
+            }
+        }
     }
     //----------------------------------------------------------------//
     for(i = 0; i < count; i++) {
